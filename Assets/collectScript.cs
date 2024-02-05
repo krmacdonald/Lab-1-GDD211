@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class collectScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float randomX;
+    public float randomZ;
     void Start()
     {
         
@@ -14,5 +15,16 @@ public class collectScript : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Player")
+        {
+            Debug.Log("Moving");
+            randomX = Random.Range(-4f, 4f);
+            randomZ = Random.Range(-4f, 5f);
+            this.transform.position = new Vector3(randomX, 0f, randomZ);
+        }
     }
 }
